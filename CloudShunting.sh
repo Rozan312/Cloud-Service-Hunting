@@ -19,15 +19,14 @@ cat $domain/urlfinder.txt | grep -Eo '(cloudservice_url|amazon_aws_url).*' | ane
 cat $domain/urlcloudjs.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | anew $domain/alives.txt
 
 #Enumerate cloud service with cloud_enum from key product.txt
-#cat $domain/alive.txt | grep -oP "(?<=://)[^./\s]+(?=\.$domain)" | sort -u | anew $domain/product.txt
+#cat $domain/alive.txt | grep -oP "(?<=://)[^./\s]+(?=\.$domain)" | sort -u | anew $domain/product.txt # use this if you don't want to use cloud enum
 cat $domain/alive.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | sort -u | anew $domain/alives.txt
 
-#~/Tools/cloud_enum/./cloud_enum.py -kf $domain/product.txt -t 10 -l $domain/cloudenum.txt
-#cat $domain/cloudenum.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | sort -u | anew $domain/alive-cloudservices.txt
-#cat $domain/cloudenum.txt | grep Open | anew $domain/open-cloudservice.txt
-#cat $domain/cloudenum.txt | grep OPEN | anew $domain/open-cloudservice.txt
+#~/Tools/cloud_enum/./cloud_enum.py -kf $domain/product.txt -t 10 -l $domain/cloudenum.txt # use this if you don't want to use cloud enum
+#cat $domain/cloudenum.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | sort -u | anew $domain/alive-cloudservices.txt # use this if you don't want to use cloud enum
+#cat $domain/cloudenum.txt | grep Open | anew $domain/open-cloudservice.txt # use this if you don't want to use cloud enum
+#cat $domain/cloudenum.txt | grep OPEN | anew $domain/open-cloudservice.txt # use this if you don't want to use cloud enum
 
-# pakai ini jika tidak mau memakai cloud enum
 
 #Parsing Cloud Service Only
 
