@@ -14,7 +14,7 @@ cat $domain/subs.txt | httpx -silent | anew $domain/alive.txt
 
 #Emeration domain JavaScript
 cat $domain/alive.txt | katana -jc -o $domain/java.txt
-cat $domain/java.txt | grep '\.js' | rush 'python3 /home/rozan/Documents/Tools/secretfinder/SecretFinder.py -i {} -o cli' | anew $domain/urlfinder.txt
+cat $domain/java.txt | grep '\.js' | rush 'python3 ~/Tools/SecretFinder/SecretFinder.py -i {} -o cli' | anew $domain/urlfinder.txt
 cat $domain/urlfinder.txt | grep -Eo '(cloudservice_url|amazon_aws_url).*' | anew $domain/urlcloudjs.txt
 cat $domain/urlcloudjs.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | anew $domain/alives.txt
 
@@ -22,7 +22,7 @@ cat $domain/urlcloudjs.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9
 #cat $domain/alive.txt | grep -oP "(?<=://)[^./\s]+(?=\.$domain)" | sort -u | anew $domain/product.txt
 cat $domain/alive.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | sort -u | anew $domain/alives.txt
 
-#cloud_enum -kf $domain/product.txt -t 10 -l $domain/cloudenum.txt
+#~/Tools/cloud_enum/./cloud_enum.py -kf $domain/product.txt -t 10 -l $domain/cloudenum.txt
 #cat $domain/cloudenum.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | sort -u | anew $domain/alive-cloudservices.txt
 #cat $domain/cloudenum.txt | grep Open | anew $domain/open-cloudservice.txt
 #cat $domain/cloudenum.txt | grep OPEN | anew $domain/open-cloudservice.txt
@@ -37,5 +37,4 @@ rm $domain/alive-cloudservice.txt
 
 echo ===Exploit FASE===
 # Nuclei Exploit 
-nuclei -t /home/rozan/nuclei-templates/takeovers/ -t /home/rozan/nuclei-templates/misconfiguration -l $domain/alive-cloudservices.txt -es info,unknown -etags ssl,network -o $domain/nucleiresult.txt
-
+nuclei -t ~/nuclei-templates/http/takeovers -t ~/nuclei-templates/http/misconfiguration  ~/nuclei-templates/http/cves ~/nuclei-templates/http/vulnerabilities ~/nuclei-templates/http/miscellaneous -l $domain/alive-cloudservices.txt -es info,unknown -etags ssl,network -o $domain/nucleiresult.txt
