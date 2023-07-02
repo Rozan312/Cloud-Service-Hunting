@@ -44,6 +44,7 @@ do
         # Run the command "pip3 install -r ./requirements.txt"
         echo "Installing dependencies for '$repo_name'..."
         pip3 install -r ./requirements.txt
+        pip3 install --upgrade requests
     elif [[ "$repo_name" == "GoCloud" ]]; then
         echo "Repository '$repo_name' downloaded successfully."
         # Run the command "go build ."
