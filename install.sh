@@ -49,6 +49,7 @@ do
         # Run the command "go build ."
         echo "Building '$repo_name'..."
         go build .
+        ./GoCloud -update
         # Move all files from the GoCloud folder to the Cloud-Service-Hunting folder
         mv * "$folder_dest"
         echo "All files from the 'GoCloud' folder have been moved to the 'Cloud-Service-Hunting' folder."
