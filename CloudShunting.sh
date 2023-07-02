@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo Masukan domain!! 
+echo Enter the main domain. Example vulnweb.com!!!
 read domain
 mkdir $domain
 
