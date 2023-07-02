@@ -49,7 +49,6 @@ do
         # Run the command "go build ."
         echo "Building '$repo_name'..."
         go build .
-        ./GoCloud -update
         # Move all files from the GoCloud folder to the Cloud-Service-Hunting folder
         mv * "$folder_dest"
         echo "All files from the 'GoCloud' folder have been moved to the 'Cloud-Service-Hunting' folder."
@@ -67,3 +66,36 @@ do
     # Return to the installation directory
     cd "$install_dir"
 done
+
+# Replace the contents of SecretFinder.py with the content of regex.txt
+if [ -f "$regex_file" ]; then
+    cp "$regex_file" "$secret_finder_file.tmp"
+    mv "$secret_finder_file.tmp" "$secret_finder_file"
+    echo "File 'SecretFinder.py' has been updated with the content from 'regex.txt'."
+else
+    echo "File 'regex.txt' not found."
+fi
+
+# Install additional tools
+echo "Installing additional tools..."
+go install -v github.com/tomnomnom/assetfinder@latest
+echo "assetfinder has been installed."
+go install -v github.com/owasp-amass/amass/v3/...@master
+echo "amass has been installed."
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+echo "httpx has been installed."
+go install github.com/projectdiscovery/katana/cmd/katana@latest
+echo "katana has been installed."
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+echo "nuclei has been installed."
+go install github.com/shenwei356/rush@latest
+echo "rush has been installed."
+go install -v github.com/tomnomnom/anew@latest
+echo "anew has been installed."
+
+# Move installed files to /usr/local/bin
+echo "Moving installed files to /usr/local/bin..."
+cd ~/go/bin
+sudo cp * /usr/local/bin
+
+echo "Installation completed."
