@@ -14,7 +14,7 @@ cat $domain/subs.txt | httpx -silent | anew $domain/alive.txt
 
 #Emeration domain JavaScript
 cat $domain/alive.txt | katana -jc -o $domain/java.txt
-cat $domain/java.txt | grep '\.js' | rush 'python3 ~/Tools/SecretFinder/SecretFinder.py -i {} -o cli' | anew $domain/urlfinder.txt
+cat $domain/java.txt | grep -oP '(https?://\S+?\.js\b)' | rush 'python3 ~/Tools/SecretFinder/SecretFinder.py -i {} -o cli' | anew $domain/urlfinder.txt
 cat $domain/urlfinder.txt | grep -Eo '(cloudservice_url|amazon_aws_url).*' | anew $domain/urlcloudjs.txt
 cat $domain/urlcloudjs.txt | grep -o -E '\b([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:[0-9]+)?(/[\S]*)?\b' | anew $domain/alives.txt
 
