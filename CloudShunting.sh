@@ -36,4 +36,4 @@ rm $domain/alive-cloudservice.txt
 
 echo ===Exploit FASE===
 # Nuclei Exploit 
-nuclei -t ~/nuclei-templates/http/takeovers -t ~/nuclei-templates/http/misconfiguration  ~/nuclei-templates/http/cves ~/nuclei-templates/http/vulnerabilities ~/nuclei-templates/http/miscellaneous -l $domain/alive-cloudservices.txt -es info,unknown -etags ssl,network -o $domain/nucleiresult.txt
+nuclei -t ~/nuclei-templates/http/takeovers -t ~/nuclei-templates/http/misconfiguration  -t ~/nuclei-templates/http/cves -t ~/nuclei-templates/http/vulnerabilities -t ~/nuclei-templates/http/miscellaneous -l $domain/alive-cloudservices.txt -es info,unknown -etags ssl,network -o $domain/nucleiresult.txt
