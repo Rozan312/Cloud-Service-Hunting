@@ -3,11 +3,12 @@
 Cloud Service Hunting is a script that automatically searches for publicly exposed/vulnerable cloud service providers only by combining several open source tools using the bash language. 
 # Feature :
 - Subdomain Enumeration ([Subfinder](https://github.com/projectdiscovery/subfinder), [AssetFinder](https://github.com/tomnomnom/assetfinder), [Amass](https://github.com/owasp-amass/amass))
+- HTTP Probe ([httpx](https://github.com/projectdiscovery/httpx))
 - Permutation Domain Cloud ([cloud_enum](https://github.com/initstring/cloud_enum))
-- Find Domain Cloud on JavaScript ([Katana](https://github.com/projectdiscovery/katana))
-  - Parsing Only Cloud Service Domain
-  - Exploitation with nuclei
-  - Dorking
+- Find Domain Cloud on JavaScript ([Katana](https://github.com/projectdiscovery/katana), [SecretFinder](https://github.com/m4ll0k/SecretFinder), [rush](https://github.com/shenwei356/rush))
+- Parsing Only Cloud Service Domain ([GoCloud](https://github.com/MantisSTS/GoCloud))
+- Exploitation with nuclei ([Nuclei](https://github.com/projectdiscovery/nuclei))
+- Dorking
 
 ## Installation Steps
 
@@ -40,7 +41,8 @@ If you already have some of the tools needed in this Cloud Service Hunting scrip
 ./CloudShunting.sh
 ``` 
 #                                                     MindMap
-![Cloud Service HuntingV 1](https://github.com/Rozan312/Cloud-Service-Hunting/assets/49874549/70b049cd-7e43-420c-b7af-9ba46b020744)
+![Cloud Service Hunting](https://github.com/Rozan312/Cloud-Service-Hunting/assets/49874549/dc09dc66-65ca-4a53-9b36-f6105a961fa4)
 
 # NOTE
 (This script is still very simple. In the future, it will always be updated in terms of features or output information received.)
+
